@@ -29,7 +29,7 @@ function render() {
   const repeated = [...visibleProjects, ...visibleProjects, ...visibleProjects];
   track.innerHTML = repeated.map((project, index) => `
     <a class="cover-card" data-cover-index="${index}" href="./project.html?project=${project.slug}" aria-label="查看 ${project.title} 完整项目">
-      <img src="${project.cover}" alt="${project.title}项目封面">
+      <img src="${project.cover}" alt="${project.title}项目封面" loading="${Math.abs(index - currentIndex) <= 1 ? 'eager' : 'lazy'}" decoding="async"${Math.abs(index - currentIndex) === 0 ? ' fetchpriority="high"' : ''}>
       <span class="cover-card-label">${project.title}</span>
       <span class="cover-card-number">${String((index % visibleProjects.length) + 1).padStart(2, '0')}</span>
     </a>`).join('');
