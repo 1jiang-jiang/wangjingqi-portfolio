@@ -41,7 +41,8 @@ if (!project) {
   const material = materialManifest[project.slug];
   const brandCase = brandCaseManifest[project.slug];
   const scriptDocument = window.SCRIPT_DOCS ? window.SCRIPT_DOCS[project.slug] : null;
-  const video = project.video ? `<section id="film" class="video-section"><video controls playsinline poster="${project.cover}"><source src="${project.video}" type="video/mp4">你的浏览器暂不支持视频播放。</video></section>` : '';
+  const videoPlayerId = `vod-player-${project.slug}`;
+  const video = project.video ? `<section id="film" class="video-section">${project.tencentVod ? `<video id="${videoPlayerId}" preload="metadata" playsinline webkit-playsinline x5-playsinline poster="${project.cover}">你的浏览器暂不支持视频播放。</video>` : `<video controls playsinline poster="${project.cover}"><source src="${project.video}" type="video/mp4">你的浏览器暂不支持视频播放。</video>`}</section>` : '';
   const background = project.background ? `<section id="background" class="detail-section project-background"><p class="eyebrow">PROJECT BACKGROUND</p><h2>项目背景</h2><p class="body-copy">${project.background}</p></section>` : '';
   const navigation = material ? `<nav class="project-navigation"><a href="#background">01 项目背景</a><a href="#script">02 脚本</a><a href="#assets">03 人物 / 场景 / 道具</a><a href="#storyboard">04 关键分镜</a><a href="#making">05 AI 生成与后期</a></nav>` : brandCase ? `<nav class="project-navigation brand-navigation"><a href="#case-study">查看完整案例</a><a href="${safe(brandCase.pdf)}" target="_blank" rel="noreferrer">打开原始 PDF ↗</a></nav>` : '';
   const script = project.story ? `<section id="script" class="detail-section narrow script-${project.slug}"><p class="eyebrow">SCRIPT</p><h2>脚本与叙事设定</h2><p class="body-copy">${project.story}</p>${scriptReader(scriptDocument)}</section>` : '';
@@ -52,4 +53,13 @@ if (!project) {
   const caseStudy = brandCase ? `<section id="case-study" class="case-study"><div><p class="eyebrow">FULL CASE STUDY</p><h2>完整项目展示</h2><p>以下内容来自原始案例文档，保留完整视觉与项目过程。</p><a class="making-link" href="${safe(brandCase.pdf)}" target="_blank" rel="noreferrer">打开原始 PDF ↗</a></div>${brandCase.images.map((src, index) => `<img loading="lazy" src="${safe(src)}" alt="${project.title}完整案例 ${index + 1}">`).join('')}</section>` : '';
   const cover = project.cover ? `<img src="${safe(project.cover)}" alt="${project.title}项目封面">` : `<div class="generated-cover"><span>${project.english}</span><b>${project.title}</b></div>`;
   root.innerHTML = `<section class="project-hero"><div><p class="eyebrow">${project.category} / ${project.year}</p><h1>${project.title}</h1><p class="type">${project.type}${project.duration ? ` · ${project.duration}` : ''}</p><p class="statement-copy">${project.statement}</p></div><div class="detail-cover">${cover}</div></section>${navigation}${video}${background}<section class="detail-section intro"><p class="eyebrow">PROJECT OVERVIEW · 项目概述</p><h2>${project.overview}</h2></section><section class="role-grid"><div><p class="eyebrow">MY ROLE · 我的职责</p><p>${project.role}</p></div><div><p class="eyebrow">CREATIVE FOCUS · 创作重点</p><ul>${project.focus.map((line) => `<li>${line}</li>`).join('')}</ul></div></section>${caseStudy}${script}${settings}${storyboard}${workflow}${making}<div class="project-return"><a href="#project-page">回到项目开头 <span>↑</span></a></div>`;
+  if (project.tencentVod && window.TCPlayer) {
+    window.TCPlayer(videoPlayerId, {
+      appID: project.tencentVod.appID,
+      fileID: project.tencentVod.fileID,
+      psign: project.tencentVod.psign,
+      autoplay: false,
+      poster: project.cover
+    });
+  }
 }
