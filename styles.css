@@ -58,3 +58,13 @@
   .project-hero{align-items:stretch}
   .project-hero .detail-cover{width:100%}
 }
+
+/* Some mobile in-app browsers report a desktop CSS width even in portrait.
+   Use orientation as a second safeguard so project heroes never retain the
+   desktop two-column grid and leave a blank right-hand side. */
+@media (orientation:portrait){
+  .project-hero{display:flex;flex-direction:column;align-items:stretch;gap:40px;padding:42px 0 68px}
+  .project-hero .detail-cover{width:100%}
+  .project-hero h1{font-size:51px}
+  .statement-copy{margin-top:30px;font-size:32px}
+}
