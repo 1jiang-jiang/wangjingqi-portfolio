@@ -54,6 +54,7 @@ window.PROJECTS = [
   },
   {
     slug: 'tianjuli-film', title: '田居里', english: 'A PLACE TO RETURN', category: 'AI 漫剧与视频', type: '乡居生活方式品牌片', year: '2026', duration: '01:27', cover: './assets/tianjuli-cover.webp', video: './videos/tianjuli.mp4',
+    tencentVod: { appID: '1472948289', fileID: '5001834817057261180', licenseUrl: 'https://1472948289.trtcube-license.cn/license/v2/1472948289_1/v_cube.license', psign: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTQ3Mjk0ODI4OSwiZmlsZUlkIjoiNTAwMTgzNDgxNzA1NzI2MTE4MCIsImN1cnJlbnRUaW1lU3RhbXAiOjE3ODczNjg3ODMsImNvbnRlbnRJbmZvIjp7ImF1ZGlvVmlkZW9UeXBlIjoiUmF3QWRhcHRpdmUiLCJyYXdBZGFwdGl2ZURlZmluaXRpb24iOjE5ODUxNDF9LCJ1cmxBY2Nlc3NJbmZvIjp7ImRvbWFpbiI6IjE0NzI5NDgyODkudm9kLXFjbG91ZC5jb20iLCJzY2hlbWUiOiJIVFRQUyJ9fQ.kiGRipI6J8NyrMnpz0zkA3Dnyjmeg-vJ0iVZNMq2r2E' },
     statement: '退休不是离开生活，而是重新选择生活。', background: '为田居里退休乡居生活社区建立情绪化品牌内容，需要跳出传统地产展示，用一位退休者的生活转场让“有院可居，有田可耕”的主张自然发生。', overview: '跟随一位退休者从城市进入江南乡居，用院落、菜地、品茶与四季变化诠释品牌生活方式。',
     role: '创意策划、脚本、人物 / 场景 / 道具设定、AI 生成、分镜剪辑', focus: ['品牌叙事', '人物连续性', '四季蒙太奇', '电影化生活方式'],
     story: '一位退休者离开城市，回到江南院落。菜地、茶席、邻里与四季变化共同组成“退休后的新归处”，让品牌主张自然发生。',
