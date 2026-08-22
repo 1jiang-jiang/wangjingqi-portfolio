@@ -57,6 +57,7 @@ if (!project) {
     window.TCPlayer(videoPlayerId, {
       appID: project.tencentVod.appID,
       fileID: project.tencentVod.fileID,
+      licenseUrl: project.tencentVod.licenseUrl,
       psign: project.tencentVod.psign,
       autoplay: false,
       poster: project.cover
