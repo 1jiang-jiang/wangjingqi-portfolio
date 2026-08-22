@@ -53,4 +53,8 @@
   .detail-header .detail-nav>a:first-child{display:none}
   .detail-header .detail-nav .back{font-size:11px}
   .cover-viewport{touch-action:pan-y}
+  /* The desktop page aligns hero items at the bottom. Reset it on phones so
+     the cover stretches to the content width instead of leaving a blank side. */
+  .project-hero{align-items:stretch}
+  .project-hero .detail-cover{width:100%}
 }
